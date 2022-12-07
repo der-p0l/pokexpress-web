@@ -5,28 +5,16 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: mern-server
-    container_name: mern-server
+    image: pokexpress-server
+    container_name: pokexpress-server
     volumes:
       - ./server/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - "8080:8080"
-    depends_on:
-      - mongo
     env_file: ./server/.env
     environment:
       - NODE_ENV=development
-    networks:
-      - app-network
-
-  mongo:
-    image: mongo
-    container_name: mern-mongo
-    volumes:
-      - data-volume:/data/db
-    ports:
-      - "27017:27017"
     networks:
       - app-network
 
@@ -34,8 +22,8 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: mern-client
-    container_name: mern-client
+    image: pokexpress-client
+    container_name: pokexpress-client
     stdin_open: true
     command: npm start
     volumes:
