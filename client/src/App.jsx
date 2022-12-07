@@ -2,18 +2,21 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './views/Home';
 import NotFound from './views/NotFound';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './shared/style.scss';
+import './App.scss';
 
 const App = () => {
 
   return (
-    <div className="app">
-      <Routes>
-        <Route path="*" element={<NotFound />} />
+    <div id="app">
+      <div id="bg-image"></div>
+      <div id="content">
+        <Routes>
+          <Route path="*" element={<NotFound />} />
 
-        <Route path="/" element={<Home />} />
-      </Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </div>
   );
 

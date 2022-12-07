@@ -1,9 +1,0 @@
-html, body {
-    min-height: 100%;
-}
-
-html, body, #root {
-    position: relative;
-    display: block;
-    height: 100%;
-}

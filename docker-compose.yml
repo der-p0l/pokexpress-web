@@ -15,8 +15,6 @@ services:
     env_file: ./server/.env
     environment:
       - NODE_ENV=development
-    networks:
-      - app-network
 
   client:
     build:
@@ -24,24 +22,11 @@ services:
       dockerfile: Dockerfile
     image: pokexpress-client
     container_name: pokexpress-client
-    stdin_open: true
-    command: npm start
     volumes:
-      - ./client/:/usr/app
-      - /usr/app/node_modules
-    depends_on:
-      - server
+      - ./client/:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  data-volume:
-  node_modules:
-  web-root:
-    driver: local
+    stdin_open: true
+    depends_on:
+      - server

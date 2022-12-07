@@ -1,7 +1,7 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "pokexpress-server",
+  "version": "0.1.0",
+  "private": true,
   "main": "index.ts",
   "scripts": {
     "build": "npx tsc",

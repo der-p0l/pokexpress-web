@@ -1,19 +1,18 @@
-# Dockerfile for client
-
-# Build react client
 FROM node:16.17.1-alpine
 
-# Working directory be app
-WORKDIR /usr/app
-
-COPY package*.json ./
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
 # Install dependencies
+COPY package*.json ./
+
 RUN npm install
 
-# Copy local files to app folder
+# Copy host files to container
 COPY . .
 
+# Expose port
 EXPOSE 3000
 
 CMD ["npm","start"]
