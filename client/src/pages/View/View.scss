@@ -1,0 +1,22 @@
+#view {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .detail {
+        display: flex;
+        flex-direction: column;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            .img {
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+    }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './views/Home';
-import NotFound from './views/NotFound';
-import './shared/style.scss';
+import NotFound from './pages/NotFound/NotFound';
+import Home from './pages/Home/Home';
+import View from './pages/View/View';
+import './shared/styles.scss';
 import './App.scss';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
 
           <Route path="/" element={<Home />} />
+          <Route path="/:itemId" element={<View />} />
         </Routes>
       </div>
     </div>

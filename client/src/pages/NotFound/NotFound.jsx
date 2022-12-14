@@ -9,7 +9,7 @@ const NotFound = () => {
   };
 
   return (
-    <div id="not-found">
+    <div id="not-found" className="container">
       <div className="box">
         <h1 className="mb-4">404</h1>
         <p className="mb-1">Usaste "Confusión" en {getCurrentUrl()}... ¡es muy efectivo!</p>

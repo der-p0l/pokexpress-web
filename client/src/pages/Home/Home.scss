@@ -1,0 +1,28 @@
+#home {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .title-container {
+        text-align: center;
+    }
+
+    .list-container {
+        display: flex;
+        flex-direction: column;
+        
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .pagination {
+            margin-top: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
