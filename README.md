@@ -24,6 +24,14 @@ Alternatively, you can detach your terminal from the containers:
 1. Start the Docker containers with `docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d`
 2. To stop the running containers execute `docker compose -f docker-compose.yml -f docker-compose.dev.yml stop`
 
+**If you install dependencies you will need to rebuild the API image!**
+
+To achieve this, you can execute `docker compose build`
+
+### Useful Information
+
+The server is acccesible at `http://localhost:8000` and the client (web app) is accesible at `http://localhost:3000`.
+
 ## Production
 
 Not supported yet.
