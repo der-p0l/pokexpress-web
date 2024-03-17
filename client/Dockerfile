@@ -1,18 +1,25 @@
 FROM node:16.17.1-alpine
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+# Install OS dependencies
+RUN apk add rsync
+
+# Create tmp directory (if it doesn't already exists)
+RUN mkdir -p /tmp
+WORKDIR /tmp
 
 # Install dependencies
 COPY package*.json ./
 
 RUN npm install
 
-# Copy host files to container
+# Create app directory
+RUN mkdir -p /app
+WORKDIR /app
+
+# Copy files to container
 COPY . .
 
 # Expose port
 EXPOSE 3000
 
-CMD ["npm","start"]
+ENTRYPOINT [ "/app/entrypoint.sh" ]

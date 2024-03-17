@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Detail = ({item}) => {
+const Detail = ({pokemon}) => {
 
   const getHeight = (height) => {
     return height / 10;
@@ -15,32 +15,32 @@ const Detail = ({item}) => {
       <div className="header">
         <img
           className="img ms-auto me-auto"
-          src={item.img}
-          alt={item.name}
+          src={pokemon.img}
+          alt={pokemon.name}
         />
-        <h1 className="display-3">{item.name}</h1>
+        <h1 className="display-3">{pokemon.name}</h1>
       </div>
       <div className="row">
         <div className="col-12 col-sm-6">
-          <p className="lead">Altura: {getHeight(item.height)}m</p>
+          <p className="lead">Height: {getHeight(pokemon.height)}m</p>
         </div>
         <div className="col-12 col-sm-6">
-          <p className="lead">Peso: {getWeight(item.weight)}kg</p>
+          <p className="lead">Weight: {getWeight(pokemon.weight)}kg</p>
         </div>
       </div>
       <div className="row">
         <div className="col-12 col-sm-6">
-          <p className="lead mb-0">Movimientos:</p>
+          <p className="lead mb-0">Moves:</p>
           <ul>
-            {item.moves.map((move, index) => (
+            {pokemon.moves.map((move, index) => (
               <li key={index}>{move}</li>
             ))}
           </ul>
         </div>
         <div className="col-12 col-sm-6">
-          <p className="lead mb-0">Tipos:</p>
+          <p className="lead mb-0">Types:</p>
           <ul>
-            {item.types.map((type, index) => (
+            {pokemon.types.map((type, index) => (
               <li key={index}>{type}</li>
             ))}
           </ul>

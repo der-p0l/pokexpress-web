@@ -1,6 +1,6 @@
-import PokemonUseCases from "../../application/useCases/pokemon.useCases";
-import Pokemon from "../../domain/pokemon/pokemon.model";
-import { Page } from "../shared/interfaces";
+import PokemonUseCases from '../../application/useCases/pokemon.useCases';
+import Pokemon from '../../domain/pokemon/pokemon.model';
+import { Page } from '../shared/interfaces';
 
 class PokemonController {
 
@@ -23,6 +23,7 @@ class PokemonController {
     async view(strId: string): Promise<Pokemon | null> {
         const id = parseInt(strId, 10);
         // TODO: validate
+
         return await this.useCases.getOnePokemon(id);
     }
 

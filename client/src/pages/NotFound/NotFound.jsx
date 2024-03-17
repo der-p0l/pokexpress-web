@@ -12,10 +12,10 @@ const NotFound = () => {
     <div id="not-found" className="container">
       <div className="box">
         <h1 className="mb-4">404</h1>
-        <p className="mb-1">Usaste "Confusión" en {getCurrentUrl()}... ¡es muy efectivo!</p>
-        <p className="mb-0">No pudimos encontrar la página que estabas buscando.</p>
+        <p className="mb-1">You used "Confusion" at {getCurrentUrl()}... It's super effective!</p>
+        <p className="mb-0">The page you were looking for was not found.</p>
         <div className="mt-4">
-          <Link to="/">Volver</Link>
+          <Link to="/">Go back</Link>
         </div>
       </div>
     </div>

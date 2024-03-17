@@ -1,7 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Button, Form, Input, InputGroup } from "reactstrap";
+import React, { useEffect, useState } from 'react';
+import { Button, Form, Input, InputGroup } from 'reactstrap';
 
 const Search = ({handleSearch, urlQuery}) => {
   const [query, setQuery] = useState("");
@@ -29,12 +27,12 @@ const Search = ({handleSearch, urlQuery}) => {
         <InputGroup>
           <Input
             name="q"
-            placeholder="Nombre"
+            placeholder="Name"
             value={query}
             onChange={onQueryChange}
           />
           <Button onClick={onSearch}>
-            Buscar
+            Search
           </Button>
         </InputGroup>
       </Form>

@@ -1,13 +1,13 @@
-import React from "react";
-import { Button, ButtonGroup, Card, CardBody, CardTitle } from "reactstrap";
+import React from 'react';
+import { Button, ButtonGroup, Card, CardBody, CardTitle } from 'reactstrap';
 
 const List = ({
-  items,
+  pokemons,
   hasMore,
   page,
   error,
   handlePageChange,
-  handleViewItem,
+  handleViewPokemon,
 }) => {
 
   const onPrev = () => {
@@ -18,9 +18,9 @@ const List = ({
     handlePageChange(page+1);
   };
 
-  const onViewMore = (itemId) => {
+  const onViewMore = (pokemonId) => {
     return () => {
-      handleViewItem(itemId);
+      handleViewPokemon(pokemonId);
     };
   };
 
@@ -32,23 +32,23 @@ const List = ({
       {!error && (
         <>
           <div className="items">
-            {items.length > 0 && items.map((item) => (
+            {pokemons.length > 0 && pokemons.map((pokemon) => (
               <Card
                 className="col-12 col-sm-6 col-md-4 col-lg-3"
-                key={item.id}
+                key={pokemon.id}
               >
                 <CardBody>
                   <CardTitle tag="h5">
-                    {item.name}
+                    {pokemon.name}
                   </CardTitle>
-                  <Button onClick={onViewMore(item.id)}>
-                    Ver más
+                  <Button onClick={onViewMore(pokemon.id)}>
+                    View more
                   </Button>
                 </CardBody>
               </Card>
             ))}
-            {items.length <= 0 && (
-              <p className="mb-0">No hay Pokémons para mostrar.</p>
+            {pokemons.length <= 0 && (
+              <p className="mb-0">No Pokemons to show.</p>
             )}
           </div>
           {(page > 1 || hasMore) && (
@@ -56,12 +56,12 @@ const List = ({
               <ButtonGroup>
                 {page > 1 && (
                   <Button onClick={onPrev}>
-                    Anterior
+                    Previous
                   </Button>
                 )}
                 {hasMore && (
                   <Button onClick={onNext}>
-                    Siguiente
+                    Next
                   </Button>
                 )}
               </ButtonGroup>

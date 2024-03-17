@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { setError, setList, setLoading } from "../store/homeSlice";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { setError, setList, setLoading } from '../store/homeSlice';
+
+const serverBaseUrl = process.env.REACT_APP_SERVER_BASE_URL;
 
 const useHomeHook = () => {
   const dispatch = useDispatch();
@@ -10,7 +12,7 @@ const useHomeHook = () => {
 
   // Store variables
   const loading = useSelector((state) => state.home.loading);
-  const listItems = useSelector((state) => state.home.listItems);
+  const listPokemons = useSelector((state) => state.home.listPokemons);
   const hasMore = useSelector((state) => state.home.hasMore);
   const page = useSelector((state) => state.home.page);
   const error = useSelector((state) => state.home.error);
@@ -25,12 +27,12 @@ const useHomeHook = () => {
     if (query) {
       setSearchParams({q: query});
     } else {
-      searchParams.delete("q");
+      searchParams.delete('q');
       setSearchParams(searchParams);
     }
   };
 
-  const fetchItems = (newQuery = null, newPage = 1) => {
+  const fetchPokemons = (newQuery = null, newPage = 1) => {
     // Start loading screen
     dispatch(setLoading(true));
     dispatch(setError(null));
@@ -42,24 +44,22 @@ const useHomeHook = () => {
     }
 
     // This will be the params used by the server to retrieve data
-    const fetchParams = {
+    const fetchParams = new URLSearchParams({
       query: newQuery,
       page: newPage,
-    };
+    });
 
-    fetch(`http://localhost:8080/pokemons/?${
-      new URLSearchParams(fetchParams).toString()
-    }`)
+    fetch(`${serverBaseUrl}/pokemons/?${fetchParams.toString()}`)
       .then((res) => res.json())
       .then((body) => dispatch(setList({
-        items: body.items,
+        pokemons: body.pokemons,
         hasMore: body.hasMore,
         page: newPage,
       })))
       .catch((err) => {
         console.error(err);
         dispatch(setError({
-          message: "No se pudieron obtener datos sobre Pokémons",
+          message: 'Could not get Pokemon data',
         }));
       })
       .finally(() => {
@@ -67,8 +67,8 @@ const useHomeHook = () => {
       });
   };
 
-  const openItemDetail = (itemId) => {
-    navigate(`/${itemId}`);
+  const openPokemonDetail = (pokemonId) => {
+    navigate(`/${pokemonId}`);
   };
 
   useEffect(() => {
@@ -77,23 +77,23 @@ const useHomeHook = () => {
       setInit(true);
 
       // Get query from URL
-      const urlQuery = searchParams.get("q");
+      const urlQuery = searchParams.get('q');
 
-      // Set state query and fetch first items
+      // Set state query and fetch first Pokemons
       setQuery(urlQuery);
-      fetchItems(urlQuery);
+      fetchPokemons(urlQuery);
     }
-  }, [searchParams, fetchItems, init]);
+  }, [searchParams, fetchPokemons, init]);
 
   return {
     loading,
-    listItems,
+    listPokemons,
     hasMore,
     page,
     error,
     query,
-    fetchItems,
-    openItemDetail,
+    fetchPokemons,
+    openPokemonDetail,
   };
 
 };

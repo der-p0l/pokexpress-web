@@ -9,13 +9,13 @@ import { Spinner } from 'reactstrap';
 const Home = () => {
   const {
     loading,
-    listItems,
+    listPokemons,
     hasMore,
     page,
     error,
     query,
-    fetchItems,
-    openItemDetail,
+    fetchPokemons,
+    openPokemonDetail,
   } = useHomeHook();
 
   const handlePageChange = (newPage) => {
@@ -24,7 +24,7 @@ const Home = () => {
       return;
     }
 
-    fetchItems(query, newPage);
+    fetchPokemons(query, newPage);
   };
 
   const handleSearch = (newQuery) => {
@@ -34,11 +34,11 @@ const Home = () => {
       return;
     }
 
-    fetchItems(newQuery);
+    fetchPokemons(newQuery);
   };
 
-  const handleViewItem = (itemId) => {
-    openItemDetail(itemId);
+  const handleViewPokemon = (pokemonId) => {
+    openPokemonDetail(pokemonId);
   };
 
   return (
@@ -57,12 +57,12 @@ const Home = () => {
         )}
         {!loading && (
           <List
-            items={listItems}
+            pokemons={listPokemons}
             hasMore={hasMore}
             page={page}
             error={error}
             handlePageChange={handlePageChange}
-            handleViewItem={handleViewItem}
+            handleViewPokemon={handleViewPokemon}
           />
         )}
       </div>

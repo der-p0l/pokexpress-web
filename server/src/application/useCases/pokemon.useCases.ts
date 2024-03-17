@@ -26,10 +26,12 @@ class PokemonUseCases {
     async getOnePokemon(id: number): Promise<Pokemon | null> {
         // Try to get pokemon from local repo
         let pokemon = this.repository.findById(id);
+
         // If couldn't get pokemon
         if (!pokemon) {
             // Get it from Pokeapi
             pokemon = await this.pokeapi.getPokemonById(id);
+
             // If we got a pokemon
             if (pokemon) {
                 // Add it to the local repo

@@ -8,7 +8,7 @@ import Detail from './components/Detail';
 const View = () => {
   const {
     loading,
-    item,
+    pokemon,
     error,
   } = useViewHook();
 
@@ -28,18 +28,18 @@ const View = () => {
             )}
             {!error && (
               <>
-                {!item && (
-                  <p className="mb-0">No se encontró el Pokémon que buscaba.</p>
+                {!pokemon && (
+                  <p className="mb-0">The Pokemon you were looking for was not found.</p>
                 )}
-                {item && (
-                  <Detail item={item} />
+                {pokemon && (
+                  <Detail pokemon={pokemon} />
                 )}
               </>
             )}
           </>
         )}
         <div className="mt-4">
-          <Link to="/">Volver</Link>
+          <Link to="/">Go back</Link>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: true,
-  item: null,
+  pokemon: null,
   error: null,
 };
 
@@ -13,8 +13,8 @@ const viewSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
-    setItem: (state, action) => {
-      state.item = action.payload;
+    setPokemon: (state, action) => {
+      state.pokemon = action.payload;
     },
     setError: (state, action) => {
       state.error = action.payload;
@@ -24,7 +24,7 @@ const viewSlice = createSlice({
 
 export const {
   setLoading,
-  setItem,
+  setPokemon,
   setError,
 } = viewSlice.actions;
 

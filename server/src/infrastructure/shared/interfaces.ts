@@ -1,5 +1,5 @@
 export interface Page {
-    items: any[];
+    pokemons: any[];
     hasMore: boolean;
 };
 

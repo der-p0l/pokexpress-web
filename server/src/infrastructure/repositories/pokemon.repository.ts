@@ -1,4 +1,4 @@
-import Pokemon from "../../domain/pokemon/pokemon.model";
+import Pokemon from '../../domain/pokemon/pokemon.model';
 
 class PokemonRepository {
 

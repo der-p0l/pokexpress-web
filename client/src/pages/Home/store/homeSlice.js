@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: true,
-  listItems: [],
+  listPokemons: [],
   hasMore: false,
   page: 1,
   error: null,
@@ -16,7 +16,7 @@ const homeSlice = createSlice({
       state.loading = action.payload;
     },
     setList: (state, action) => {
-      state.listItems = action.payload.items;
+      state.listPokemons = action.payload.pokemons;
       state.hasMore = action.payload.hasMore;
       state.page = action.payload.page;
     },
